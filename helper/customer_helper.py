@@ -5,7 +5,7 @@ from helper.requestsUtility import RequestsUtility
 class CustomerHelper(object):
 
     def __init__(self):
-        self.requsts_utility = RequestsUtility()
+        self.requests_utility = RequestsUtility()
 
     def create_customer(self, email=None, password=None, **kwargs):
 
@@ -20,5 +20,5 @@ class CustomerHelper(object):
         payload['password'] = password
         payload.update(kwargs)
 
-        self.requsts_utility.post('customers', payload=payload)
+        self.requests_utility.post('customers', payload=payload)
         return True
