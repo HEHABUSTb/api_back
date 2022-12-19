@@ -23,6 +23,3 @@ def generate_random_email_and_password(domain=None, email_prefix=None):
     logging.info(f'Randomly generated email and password: {random_info}')
 
     return random_info
-
-
-generate_random_email_and_password()

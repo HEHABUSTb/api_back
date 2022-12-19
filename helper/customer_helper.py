@@ -20,5 +20,5 @@ class CustomerHelper(object):
         payload['password'] = password
         payload.update(kwargs)
 
-        self.requests_utility.post('customers', payload=payload)
-        return True
+        rs_api = self.requests_utility.post('customers', payload=payload)
+        return rs_api
