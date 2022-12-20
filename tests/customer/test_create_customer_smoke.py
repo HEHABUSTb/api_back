@@ -2,6 +2,7 @@ import pytest
 import logging
 from helper.Utilities import generate_random_email_and_password
 from helper.customer_helper import CustomerHelper
+from data_access_object.customers_dao import CustomersDAO
 
 
 @pytest.mark.tcid29
@@ -34,3 +35,10 @@ def test_create_create_customer_only_email_password():
     assert rs_json['first_name'] == '', f"Create customer api returned first_name {rs_json['first_name']} should be empty"
 
     # verify customer is created in database
+    customer_dao = CustomersDAO()
+    customer_info = customer_dao.get_customer_by_email(email)
+
+    id_from_api = rs_json['id']
+    id_from_db = customer_info[0]['ID']
+
+    assert id_from_api == id_from_db, f"Create customer id from api {id_from_api} in database {id_from_db}"
