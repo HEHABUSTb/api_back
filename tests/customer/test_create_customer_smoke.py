@@ -20,8 +20,6 @@ def test_create_create_customer_only_email_password():
     customer_helper = CustomerHelper()
     rs_api = customer_helper.create_customer(email=email, password=password)
     rs_json = rs_api.json()
-    logging.info(f"Response code {rs_api.status_code}")
-    logging.info(f"Response json {rs_json}")
     # import pdb
     # pdb.set_trace()
 
