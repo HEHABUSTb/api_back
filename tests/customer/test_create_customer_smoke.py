@@ -1,7 +1,7 @@
 import pytest
 import logging
 from helper.Utilities import generate_random_email_and_password
-from helper.customer_helper import CustomerHelper
+from helper.helper import Helper
 from data_access_object.customers_dao import CustomersDAO
 
 
@@ -18,7 +18,7 @@ def test_create_create_customer_only_email_password():
     payload = {'email': email, 'password': password}
 
     # make the call
-    customer_helper = CustomerHelper()
+    customer_helper = Helper()
     rs_api = customer_helper.create_customer(email=email, password=password)
     rs_json = rs_api.json()
     # import pdb

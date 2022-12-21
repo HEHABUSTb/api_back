@@ -1,7 +1,7 @@
 import pytest
 import logging
 from data_access_object.customers_dao import CustomersDAO
-from helper.customer_helper import CustomerHelper
+from helper.helper import Helper
 
 
 @pytest.mark.customers
@@ -14,7 +14,7 @@ def test_create_customer_fail_existing_email():
     existing_email = existing_customer[0]['user_email']
 
     # call the api
-    customer_helper = CustomerHelper()
+    customer_helper = Helper()
     rs_api = customer_helper.create_customer(email=existing_email, password='Password1')
     rs_json = rs_api.json()
 

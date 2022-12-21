@@ -2,7 +2,7 @@ from helper.Utilities import generate_random_email_and_password
 from helper.requestsUtility import RequestsUtility
 
 
-class CustomerHelper(object):
+class Helper(object):
 
     def __init__(self):
         self.requests_utility = RequestsUtility()
@@ -23,3 +23,5 @@ class CustomerHelper(object):
         rs_api = self.requests_utility.post('customers', payload=payload)
         return rs_api
 
+    def get_product_by_id(self, product_id):
+        return self.requests_utility.get(f"products/{product_id}")
