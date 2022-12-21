@@ -22,3 +22,4 @@ class CustomerHelper(object):
 
         rs_api = self.requests_utility.post('customers', payload=payload)
         return rs_api
+

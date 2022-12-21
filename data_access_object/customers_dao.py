@@ -16,3 +16,10 @@ class CustomersDAO(object):
 
         return rs_sql
 
+    def get_random_customer_from_db(self):
+
+        sql = 'SELECT * FROM site.wp_users ORDER BY RAND() LIMIT 1;'
+        rs_sql = self.db_helper.execute_select(sql)
+        print(rs_sql)
+
+        return rs_sql
