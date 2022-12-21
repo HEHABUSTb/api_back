@@ -3,7 +3,7 @@ from helper.requestsUtility import RequestsUtility
 import logging
 
 
-@pytest.mark.customers
+@pytest.mark.products
 @pytest.mark.tcid24
 def test_get_all_products():
 
