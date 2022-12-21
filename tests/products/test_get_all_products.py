@@ -4,12 +4,13 @@ import logging
 
 
 @pytest.mark.customers
-@pytest.mark.tcid30
-def test_get_all_customers():
+@pytest.mark.tcid24
+def test_get_all_products():
 
     # make the call
     request_helper = RequestsUtility()
-    rs_api = request_helper.get('customers')
+    rs_api = request_helper.get(endpoint='products')
+    rs_json = rs_api.json()
 
     # verify status code of the call
     assert rs_api.status_code == 200, f'Expected status code 200 but actual {rs_api.status_code}'
