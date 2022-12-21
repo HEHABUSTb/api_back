@@ -3,6 +3,7 @@ from helper.requestsUtility import RequestsUtility
 import logging
 
 
+@pytest.mark.customers
 @pytest.mark.tcid30
 def test_get_all_customers():
     request_helper = RequestsUtility()

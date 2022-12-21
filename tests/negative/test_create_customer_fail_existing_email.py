@@ -4,6 +4,7 @@ from data_access_object.customers_dao import CustomersDAO
 from helper.customer_helper import CustomerHelper
 
 
+@pytest.mark.customers
 @pytest.mark.tcid47
 def test_create_customer_fail_existing_email():
 

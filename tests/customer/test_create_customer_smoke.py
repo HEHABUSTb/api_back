@@ -5,6 +5,7 @@ from helper.customer_helper import CustomerHelper
 from data_access_object.customers_dao import CustomersDAO
 
 
+@pytest.mark.customers
 @pytest.mark.tcid29
 def test_create_create_customer_only_email_password():
 
