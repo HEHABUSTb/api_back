@@ -16,4 +16,4 @@ def test_get_all_products():
     assert rs_api.status_code == 200, f'Expected status code 200 but actual {rs_api.status_code}'
 
     # verify get request is not an empty
-    assert rs_api.json(), f"Response of a list all customers is empty"
+    assert rs_api.json(), f"Response of a list all products is empty"
