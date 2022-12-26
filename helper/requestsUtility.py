@@ -51,6 +51,24 @@ class RequestsUtility(object):
 
         return rs_api
 
+    def delete(self, endpoint, payload=None, headers=None):
+        if not headers:
+            headers = {"Content-Type": "application/json"}
+
+        url = self.base_url + endpoint
+        logging.info(f'url for the get call: {url}')
+
+        import json
+        payload = json.dumps(payload)
+        logging.info(f'payload for the get call: {payload}')
+
+        rs_api = requests.delete(url=url, data=payload, headers=headers, auth=self.auth)
+        rs_json = rs_api.json()
+        logging.info(f"Response DELETE code {rs_api.status_code}")
+        logging.info(f"Response json {rs_json}")
+
+        return rs_api
+
 
 if __name__ == "__main__":
     requests1 = RequestsUtility()
