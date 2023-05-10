@@ -17,7 +17,8 @@ class OrdersHelper(object):
 
         # if user add additional args, update payload
         if additional_args:
-            assert isinstance(additional_args, dict), f"Parameter additional_args must be a dictionary not {type(additional_args)}"
+            assert isinstance(additional_args, dict),\
+                f"Parameter additional_args must be a dictionary not {type(additional_args)}"
             payload.update(additional_args)
         logging.info(f"Payload = {payload}")
 
