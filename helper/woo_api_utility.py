@@ -1,6 +1,6 @@
 import os
-from host_config import WOO_API_HOSTS
-from CredentialsUtility import CredentialsUtility
+from helper.host_config import WOO_API_HOSTS
+from helper.CredentialsUtility import CredentialsUtility
 from woocommerce import API
 import logging
 
@@ -11,18 +11,33 @@ class WooAPIUtility(object):
         wc_creds = CredentialsUtility.get_wc_api_keys()
         self.env = os.environ.get('ENV', 'test')
         self.base_url = WOO_API_HOSTS[self.env]
+        logging.info(f"Base url {self.base_url}")
 
         self.wcapi = API(
             url=self.base_url,
             consumer_key=wc_creds['wc_key'],
             consumer_secret=wc_creds['wc_secret'],
-            version="wc/v3"
+            version="wc/v3",
+            timeout=30
         )
 
     @staticmethod
     def assert_status_code(expected_status_code, response_status_code):
         assert expected_status_code == response_status_code, f"Bat status code." \
                                                              f" Expected {expected_status_code} get {response_status_code}"
+
+    def post(self, wc_endpoint, params=None, expected_status_code=200):
+
+        rs_api = self.wcapi.post(wc_endpoint, data=params)
+        rs_status_code = rs_api.status_code
+        expected_status_code = expected_status_code
+        rs_json = rs_api.json()
+        self.assert_status_code(expected_status_code, rs_status_code)
+
+        logging.info(f"Response POST code {rs_status_code}")
+        logging.info(f"Response json {rs_json}")
+
+        return rs_json
 
     def get(self, wc_endpoint, params=None, expected_status_code=200):
 
