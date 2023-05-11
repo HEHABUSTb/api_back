@@ -1,7 +1,7 @@
 import requests
 import os
-from helper.host_config import API_HOSTS
-from helper.CredentialsUtility import CredentialsUtility
+from helper_classes.host_config import API_HOSTS
+from helper_classes.CredentialsUtility import CredentialsUtility
 import logging
 from requests_oauthlib import OAuth1
 

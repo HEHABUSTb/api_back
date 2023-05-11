@@ -1,7 +1,7 @@
 import logging
 import os
 import json
-from helper.woo_api_utility import WooAPIUtility
+from helper_classes.woo_api_utility import WooAPIUtility
 from data_access_object.order_dao import OrderDAO
 
 

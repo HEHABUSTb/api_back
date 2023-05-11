@@ -1,5 +1,5 @@
 import pymysql
-from helper.CredentialsUtility import CredentialsUtility
+from helper_classes.CredentialsUtility import CredentialsUtility
 
 
 class DBUtility(object):

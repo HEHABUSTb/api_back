@@ -1,6 +1,6 @@
 import os
-from helper.host_config import WOO_API_HOSTS
-from helper.CredentialsUtility import CredentialsUtility
+from helper_classes.host_config import WOO_API_HOSTS
+from helper_classes.CredentialsUtility import CredentialsUtility
 from woocommerce import API
 import logging
 
