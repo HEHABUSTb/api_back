@@ -27,7 +27,8 @@ class OrdersHelper(object):
 
         return rs_api
 
-    def verify_order_is_created(self, order_json, expected_products, customer_id=0):
+    @staticmethod
+    def verify_order_is_created(order_json, expected_products, customer_id=0):
         order_dao = OrderDAO()
 
         # Verify response
