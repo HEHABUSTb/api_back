@@ -1,5 +1,6 @@
-from helper.Utilities import generate_random_email_and_password
-from helper.requestsUtility import RequestsUtility
+from helper_classes.Utilities import generate_random_email_and_password
+from helper_classes.requestsUtility import RequestsUtility
+from woo_api_utility import WooAPIUtility
 import logging
 
 
@@ -7,6 +8,7 @@ class Helper(object):
 
     def __init__(self):
         self.requests_utility = RequestsUtility()
+        self.woo_helper = WooAPIUtility()
 
     def create_customer(self, email=None, password=None, **kwargs):
 
@@ -56,3 +58,6 @@ class Helper(object):
 
     def delete_product_by_id(self, product_id):
         return self.requests_utility.delete(f"products/{product_id}")
+
+    def update_regular_price(self, product_id, payload):
+        return self.woo_helper.put(f"products/{product_id}", params=payload)

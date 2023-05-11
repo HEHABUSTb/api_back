@@ -1,5 +1,5 @@
-from helper.Utilities import generate_random_string
-from helper.orders_helper import OrdersHelper
+from helper_classes.Utilities import generate_random_string
+from helper_classes.orders_helper import OrdersHelper
 import pytest
 import logging
 

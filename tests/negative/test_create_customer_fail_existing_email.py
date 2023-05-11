@@ -1,7 +1,7 @@
 import pytest
 import logging
 from data_access_object.customers_dao import CustomersDAO
-from helper.helper import Helper
+from helper_classes.helper import Helper
 
 
 @pytest.mark.customers

@@ -1,7 +1,7 @@
 import pytest
 import logging
-from helper.Utilities import generate_random_email_and_password
-from helper.helper import Helper
+from helper_classes.Utilities import generate_random_email_and_password
+from helper_classes.helper import Helper
 from data_access_object.customers_dao import CustomersDAO
 
 

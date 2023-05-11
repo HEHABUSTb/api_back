@@ -1,6 +1,6 @@
 import pytest
 from datetime import datetime, timedelta
-from helper.helper import Helper
+from helper_classes.helper import Helper
 import logging
 from data_access_object.products_dao import ProductsDAO
 

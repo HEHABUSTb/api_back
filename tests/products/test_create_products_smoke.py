@@ -1,6 +1,6 @@
 import logging
-from helper.Utilities import generate_random_string
-from helper.helper import Helper
+from helper_classes.Utilities import generate_random_string
+from helper_classes.helper import Helper
 from data_access_object.products_dao import ProductsDAO
 import pytest
 

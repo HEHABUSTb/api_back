@@ -1,6 +1,6 @@
 import pytest
 from data_access_object.products_dao import ProductsDAO
-from helper.helper import Helper
+from helper_classes.helper import Helper
 import logging
 
 

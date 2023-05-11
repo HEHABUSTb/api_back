@@ -1,5 +1,5 @@
 import pytest
-from helper.requestsUtility import RequestsUtility
+from helper_classes.requestsUtility import RequestsUtility
 import logging
 
 
