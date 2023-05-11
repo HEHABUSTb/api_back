@@ -1,6 +1,6 @@
 from helper_classes.Utilities import generate_random_email_and_password
 from helper_classes.requestsUtility import RequestsUtility
-from woo_api_utility import WooAPIUtility
+from helper_classes.woo_api_utility import WooAPIUtility
 import logging
 
 
