@@ -1,7 +1,9 @@
+from helper.Utilities import generate_random_string
 from helper.orders_helper import OrdersHelper
 import pytest
 import logging
 
+pytestmark = [pytest.mark.orders, pytest.mark.regression]
 
 @pytest.mark.tcid55
 @pytest.mark.tcid56
@@ -65,3 +67,25 @@ def test_update_invalid_order_status():
     current_message = rs_api['message']
     assert expected_message == current_message, f"Update order status to random string didn't have correct message." \
                                                 f"Expected: {expected_message} get: {current_message} "
+
+
+@pytest.mark.tcid59
+def test_update_order_customer_note():
+
+    orders_helper = OrdersHelper()
+
+    # create new order
+    order_json = orders_helper.create_order()
+    old_customer_note = order_json['customer_note']
+    logging.info(f"Old customer note: {old_customer_note}")
+    order_id = order_json['id']
+    logging.info(f"Order id: {order_id}")
+
+    # Update customer note
+    random_string = generate_random_string(length=40)
+    payload = {"customer_note": random_string}
+    updated_order = orders_helper.update_order(order_id=order_id, payload=payload)
+    updated_customer_note = updated_order['customer_note']
+
+    assert random_string == updated_customer_note, f"Updated customer note: {updated_customer_note}" \
+                                                       f" is not equal random customer note {random_string}"
