@@ -23,7 +23,7 @@ class DBUtility(object):
             response_dict = cursor.fetchall()
             cursor.close()
         except Exception as e:
-            raise Exception(f"Failed runningg sql: {sql} \n Error: {str(e)}")
+            raise Exception(f"Failed running sql: {sql} \n Error: {str(e)}")
         finally:
             connection.close()
 

@@ -27,6 +27,9 @@ class OrdersHelper(object):
 
         return rs_api
 
+    def update_order(self, order_id, payload):
+        return self.woo_helper.put(f"orders/{order_id}", payload)
+
     @staticmethod
     def verify_order_is_created(order_json, expected_products, customer_id=0):
         order_dao = OrderDAO()
