@@ -22,11 +22,12 @@ class ProductsHelper(Helper):
 
         return product
 
-    def step_update_sale_price(self, product):
+    def step_update_sale_price(self, product_id):
         logging.info('step_update_sale_price')
 
+        product = self.woo_helper.get(wc_endpoint=f"products/{product_id}")
+
         # Create payload
-        product_id = product['id']
         regular_price = product['regular_price']
         sale_price = float(regular_price) * 0.75
         payload = {"sale_price": "{:.2f}".format(sale_price)}

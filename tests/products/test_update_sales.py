@@ -1,12 +1,23 @@
 import pytest
-import logging
 from helper_classes.woo_api_utility import WooAPIUtility
 from helper_classes.Products_helper import ProductsHelper
-import random
 
 
 @pytest.mark.tcid63
+@pytest.mark.tcid64
 def test_update_sale_price():
+    helper = ProductsHelper()
+    product_id = 21
+    # tcid 64: Verify update 'sale_price=" "' will set field 'on_sale'=False
+    helper.step_update_sale_price(product_id=product_id)
+    helper.step_remove_sale_price(product_id=product_id)
+
+    # tcid 63: Verify update 'sale_price > 0' will set field 'on_sale'=True
+    helper.step_update_sale_price(product_id=product_id)
+    helper.step_remove_sale_price(product_id=product_id)
+
+
+def test_update_sale_price_old():
     helper = WooAPIUtility()
 
     # Get product with on_sale = False
@@ -34,13 +45,3 @@ def test_update_sale_price():
 
     # Verify response
     assert product_sale_status is True, f"Product sale status should be a True, not a {product_sale_status}"
-
-    # Remove sale_price
-
-
-def test_update_sale_price2():
-    helper = ProductsHelper()
-    product_id = 21
-    product = helper.step_remove_sale_price(product_id=product_id)
-    helper.step_update_sale_price(product=product)
-    helper.step_remove_sale_price(product_id=product_id)
