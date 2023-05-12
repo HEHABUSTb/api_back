@@ -27,6 +27,7 @@ class WooAPIUtility(object):
                                                              f" Expected {expected_status_code} get {response_status_code}"
 
     def get(self, wc_endpoint, params=None, expected_status_code=200):
+        logging.info(f"Send request with endpoint: {wc_endpoint} and params: {params}")
 
         rs_api = self.wcapi.get(wc_endpoint, params=params)
         rs_status_code = rs_api.status_code
@@ -40,6 +41,7 @@ class WooAPIUtility(object):
         return rs_json
 
     def post(self, wc_endpoint, params=None, expected_status_code=200):
+        logging.info(f"Send request with endpoint: {wc_endpoint} and params: {params}")
 
         rs_api = self.wcapi.post(wc_endpoint, data=params)
         rs_status_code = rs_api.status_code
@@ -53,6 +55,7 @@ class WooAPIUtility(object):
         return rs_json
 
     def put(self, wc_endpoint, params=None, expected_status_code=200):
+        logging.info(f"Send request with endpoint: {wc_endpoint} and params: {params}")
 
         rs_api = self.wcapi.put(wc_endpoint, data=params)
         rs_status_code = rs_api.status_code
