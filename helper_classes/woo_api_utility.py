@@ -47,10 +47,11 @@ class WooAPIUtility(object):
         rs_status_code = rs_api.status_code
         expected_status_code = expected_status_code
         rs_json = rs_api.json()
-        self.assert_status_code(expected_status_code, rs_status_code)
 
         logging.info(f"Response POST code {rs_status_code}")
         logging.info(f"Response json {rs_json}")
+
+        self.assert_status_code(expected_status_code, rs_status_code)
 
         return rs_json
 
