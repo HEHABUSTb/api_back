@@ -8,11 +8,16 @@ from helper_classes.Products_helper import ProductsHelper
 def test_update_sale_price():
     helper = ProductsHelper()
     product_id = 21
+
     # tcid 64: Verify update 'sale_price=" "' will set field 'on_sale'=False
-    helper.step_update_sale_price(product_id=product_id)
+    helper.step_setup_sale_price(product_id=product_id)
     helper.step_remove_sale_price(product_id=product_id)
 
     # tcid 63: Verify update 'sale_price > 0' will set field 'on_sale'=True
+    helper.step_setup_sale_price(product_id=product_id)
+    helper.step_remove_sale_price(product_id=product_id)
+
+    # tcid 65: Verify update 'sale_price' updates the 'sale_price' field
     helper.step_update_sale_price(product_id=product_id)
     helper.step_remove_sale_price(product_id=product_id)
 

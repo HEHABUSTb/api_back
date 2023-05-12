@@ -1,3 +1,5 @@
+import random
+
 from helper_classes.helper import Helper
 import logging
 
@@ -22,8 +24,8 @@ class ProductsHelper(Helper):
 
         return product
 
-    def step_update_sale_price(self, product_id):
-        logging.info('step_update_sale_price')
+    def step_setup_sale_price(self, product_id):
+        logging.info('step_setup_sale_price')
 
         product = self.woo_helper.get(wc_endpoint=f"products/{product_id}")
 
@@ -38,3 +40,29 @@ class ProductsHelper(Helper):
 
         # Verify response
         assert product_sale_status is True, f"Product sale status should be a True, not a {product_sale_status}"
+
+    def step_update_sale_price(self, product_id, multiple=2):
+        logging.info('step_update_sale_price')
+
+        while multiple > 0:
+            logging.info(f"Start loop update multiple number: {multiple}")
+            product = self.woo_helper.get(wc_endpoint=f"products/{product_id}")
+            old_sale_price = product['sale_price']
+            regular_price = product['regular_price']
+
+            # Create payload
+            percent = float(f"0.{random.randint(1, 99)}")
+            sale_price = float(regular_price) * percent
+            payload = {"sale_price": "{:.2f}".format(sale_price)}
+
+            # Update product sale_price
+            updated_product = self.woo_helper.put(wc_endpoint=f"products/{product_id}", params=payload)
+            product_sale_status = updated_product['on_sale']
+            new_sale_price = updated_product['sale_price']
+
+            # Verify response
+            logging.info(f"Old sale_price: {old_sale_price} new sale_price: {new_sale_price}")
+            assert product_sale_status is True, f"Product sale status should be a True, not a {product_sale_status}"
+            assert new_sale_price != old_sale_price, f"Expected different values for sale_price old: {old_sale_price}" \
+                                                     f" new: {new_sale_price}"
+            multiple -= 1
